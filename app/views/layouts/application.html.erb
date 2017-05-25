@@ -9,6 +9,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <% if user_signed_in? %>
+                <% if (current_user.admin?) %>
+                    <a class="navbar-brand" href="/">Tealeaf Todo</a>
+                <% end %>
+                <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class:'navbar-brand' %>
+            <% else %>
+              <a href="#" class="navbar-brand" >Menu item 1</a>
+              <a href="#" class="navbar-brand" >Menu item 2</a>
+                <% unless current_page?(new_user_session_path) %>
+                 <%= link_to_unless_current 'Login', new_user_session_path, class:'navbar-brand' %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <section>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </section>
   </body>
 </html>
