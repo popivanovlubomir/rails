@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   authenticate :user do
     namespace :admin do
       root to: 'dashboard#index'
-      resource :admin/dashboard, :only => [:index]
+      resource 'admin#dashboard', :only => [:index]
     end
   end
 
