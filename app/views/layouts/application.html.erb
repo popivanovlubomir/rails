@@ -15,7 +15,7 @@
           <div class="navbar-header">
             <% if user_signed_in? %>
                 <% if (current_user.admin?) %>
-                    <a class="navbar-brand" href="/">Tealeaf Todo</a>
+                    <a class="navbar-brand" href="/">Home</a>
                 <% end %>
                 <%= link_to 'Logout', destroy_user_session_path, :method => :delete, class:'navbar-brand' %>
             <% else %>
